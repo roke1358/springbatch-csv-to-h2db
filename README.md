@@ -21,8 +21,8 @@ driver: org.h2.Driver
 to generate csv file:
 https://mockaroo.com/
 
-id, row number
-firstName, First Name
-lastName, Last Name
-dept, Number min=1, max=4,  fx('00' + this.to_s)
+id, row number |
+firstName, First Name |
+lastName, Last Name |
+dept, Number min=1, max=4,  fx('00' + this.to_s) |
 salary, number
