@@ -18,7 +18,7 @@ jdbc url: jdbc:h2:mem:testdb
 driver: org.h2.Driver
 
 
-tp generate csv file:
+to generate csv file:
 https://mockaroo.com/
 
 id, row number
