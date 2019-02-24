@@ -1,6 +1,12 @@
 # springbatch-csv-to-h2db
 
-To run:
+compile:
+mvn clean install -DskipTests
+
+run:
+mvn spring-boot:run
+
+browser:
 http://localhost:8089/load
 
 to check h2 db:
