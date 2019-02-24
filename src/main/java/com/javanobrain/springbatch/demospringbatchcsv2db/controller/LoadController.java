@@ -1,6 +1,7 @@
 package com.javanobrain.springbatch.demospringbatchcsv2db.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.batch.core.BatchStatus;
@@ -15,11 +16,17 @@ import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteExcep
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.javanobrain.springbatch.demospringbatchcsv2db.domain.User;
+import com.javanobrain.springbatch.demospringbatchcsv2db.domain.UserRepository;
+
+
+
 @RestController
-@RequestMapping("/load")
+@RequestMapping("/")
 public class LoadController {
 	
 	@Autowired
@@ -28,7 +35,10 @@ public class LoadController {
 	@Autowired
 	Job job;
 	
-	@GetMapping
+	@Autowired
+	UserRepository userRepository;
+	
+	@GetMapping("/load")
 	public BatchStatus load() throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
 		
 		Map<String, JobParameter> maps = new HashMap<>();
@@ -42,5 +52,16 @@ public class LoadController {
 		return jobExecution.getStatus();
 		
 	}
+	
+	@GetMapping("/all")
+    public List<User> getAll() {
+        return userRepository.findAll();
+    }
+	
+    @GetMapping("/id/{id}")
+    public User getId(@PathVariable("id") final Integer id) {
+        return userRepository.findOne(id);
+    }
+
 
 }
