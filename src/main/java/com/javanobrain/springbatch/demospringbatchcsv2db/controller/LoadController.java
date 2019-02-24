@@ -36,10 +36,6 @@ public class LoadController {
 		JobParameters parameters = new JobParameters(maps);
 		JobExecution jobExecution = jobLauncher.run(job, parameters);
 
-		while (jobExecution.isRunning()) {
-			System.out.println("batch in progress...");
-		}
-		
 		System.out.println("JobExecution: " + jobExecution.getStatus());
 		System.out.println("[DONE] " );
 		
